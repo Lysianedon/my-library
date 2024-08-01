@@ -1,1 +1,10 @@
-<p>book-list works!</p>
+<!-- src/app/book-list/book-list.component.html -->
+<app-add-book (addBook)="addBook($event)"></app-add-book>
+
+<ul *ngIf="books$">
+    <li *ngFor="let book of books$ | async">
+        <app-book-item [book]="book"></app-book-item>
+        <button (click)="onRemove(book.id)">Supprimer</button>
+        <button [routerLink]="['/books', book.id, 'details']" routerLinkActive="active">Détails</button>
+    </li>
+</ul>
