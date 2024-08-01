@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "../../../../../32.Angular/Bibliotheque"
+		},
+		{
+			"name": "my-library",
+			"path": ".."
+		}
+	],
+	"settings": {}
+}
