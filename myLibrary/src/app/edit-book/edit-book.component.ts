@@ -27,22 +27,6 @@ export class EditBookComponent {
 book!:Book;
 constructor(private route: ActivatedRoute,private router: Router, private bookService : BookService, private _location: Location){}
 
- /**
-   * ngOnInit lifecycle hook to initialize the component.
-   * It retrieves the book ID from the route parameters and fetches the book details.
-   */
-  // ngOnInit(): void {
-  //       this.route.paramMap.subscribe(params => {
-  //         const id : string|null = params.get("bookId");
-    
-  //         if(id){
-  //           this.bookService.getBookById(id).subscribe((book) => {
-  //             this.book = book;
-  //           } )
-  //         }
-    
-  //         });
-  // };
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       const id: string | null = params.get('bookId');
