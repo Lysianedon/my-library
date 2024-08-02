@@ -1,4 +1,13 @@
-<div>
-    <span class="m-1 fw-bold">{{book.title}}</span>
-    <span class="m-1">{{book.author}}</span>
-</div>
+  
+   <div class="d-flex flex-wrap align-items-center">
+    <span 
+      class="dot me-2" 
+      [ngClass]="{
+        'bg-success': book.status === 'available',
+        'bg-warning': book.status === 'borrowed'
+      }">
+    </span>
+    <span class="m-1 fw-bold">{{ book.title }} </span>
+    <span class="m-1"> {{ book.author }}</span>
+  </div>
+  
