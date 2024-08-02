@@ -2,6 +2,7 @@
     <div class="card shadow-sm">
       <div class="card-header bg-primary text-white d-flex justify-content-between">
         <h3 class="card-title mb-0 mx-auto">Ajouter un livre</h3>
+        <button class="btn btn-outline-light btn-sm" (click)="goBack()">Retour</button>
       </div>
       <div class="card-body">
         <form #bookForm="ngForm" (ngSubmit)="onAddBook()">
