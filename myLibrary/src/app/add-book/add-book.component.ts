@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
 import { Book } from '../../model/book.model';
 import { FormsModule } from '@angular/forms';
 import { BookService } from '../../service/book.service';
@@ -35,7 +35,13 @@ export class AddBookComponent {
         description: '',
         status: 'available',
       };
-      this._location.back();
+      this.goBack();
     }
   }
+  /**
+   * Method to navigate back to the previous location.
+   */
+    goBack() : void{
+      this._location.back();
+    }
 }

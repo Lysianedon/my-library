@@ -4,6 +4,10 @@ import { BookDetailComponent } from './book-detail/book-detail.component';
 import { EditBookComponent } from './edit-book/edit-book.component';
 import { AddBookComponent } from './add-book/add-book.component';
 
+/**
+ * The routes configuration for the application.
+ * It defines the paths and associated components for the book management system.
+ */
 export const routes: Routes = [
     {path:"", component:BookListComponent},
     {path: "books", component:BookListComponent},
