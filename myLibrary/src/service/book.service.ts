@@ -25,8 +25,8 @@ export class BookService {
     );
   }
 
-  addBook(book: Book): Observable<void> {
-    return this.http.post<void>(this.apiURL, book).pipe(
+  addBook(book: Book): Observable<Book> {
+    return this.http.post<Book>(this.apiURL, book).pipe(
       catchError((error) => {
         console.error(`Book ${book.title} cannot be created`, error);
         return throwError(() => new Error('Creation error'));
