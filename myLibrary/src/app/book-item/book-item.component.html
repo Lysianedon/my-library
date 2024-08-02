@@ -1,4 +1,29 @@
-<div>
+
+
+<!-- <div class="">
     <span class="m-1 fw-bold">{{book.title}}</span>
     <span class="m-1">{{book.author}}</span>
-</div>
+    <span 
+      class="badge p-1" 
+      [ngClass]="{
+        'badge-outline-success': book.status === 'available',
+        'badge-outline-warning': book.status === 'borrowed'
+      }">
+      {{ book.status.toLowerCase() === 'available' ? 'Disponible' : 'Indisponible' }}
+    </span>
+  </div> -->
+  
+  <div class="d-flex flex-wrap align-items-center">
+    <span class="m-1 fw-bold">{{ book.title }}</span>
+    <span class="m-1">{{ book.author }}</span>
+    <span 
+      class="badge border ms-2" 
+      [ngClass]="{
+        'text-success border-success': book.status === 'available',
+        'text-warning border-warning': book.status === 'borrowed'
+      }">
+      {{ book.status === 'available' ? 'Disponible' : 'Indisponible' }}
+    </span>
+  </div>
+  
+  
