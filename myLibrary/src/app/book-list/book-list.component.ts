@@ -1,11 +1,10 @@
-import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { BookService } from '../../service/book.service';
 import { Book } from '../../model/book.model';
 import { BookItemComponent } from '../book-item/book-item.component';
 import { CommonModule } from '@angular/common';
-import { Observable, Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 import {
-  Router,
   RouterLink,
   RouterLinkActive,
   RouterOutlet,
@@ -33,13 +32,8 @@ export class BookListComponent {
   ngOnInit(): void {
     this.books$ = this.bookService.getBooks();
   }
-  onRemove(id: string): void {
-this.bookService.deleteBook(id).subscribe(()=>{this.books$=this.bookService.getBooks();})
-}
+  remove(id: string): void {
+    this.bookService.deleteBook(id).subscribe(()=>{this.books$=this.bookService.getBooks();})
+  }
 
-  // addBook(book: Book) {
-  //   this.bookService.addBook(book).subscribe(() => {
-  //     this.books$ = this.bookService.getBooks();
-  //   })
-  // }
 }

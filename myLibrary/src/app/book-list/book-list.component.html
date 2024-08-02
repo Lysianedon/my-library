@@ -2,16 +2,16 @@
 
   <div class="container mt-5" *ngIf="books$">
     <div class="d-flex justify-content-between align-items-center mb-4">
-      <h3 class="text-primary mx-auto">Ma liste de livres</h3>
+      <h3 class="text-primary mx-auto">Ma bibliothèque</h3>
       <button class="btn btn-outline-primary m-1" [routerLink]="['/books/add']" routerLinkActive="active">Ajouter</button>
     </div>
     
     <ul class="list-group">
       <li class="list-group-item border-top mb-3" *ngFor="let book of books$ | async">
-        <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex justify-content-between align-items-center flex-column flex-md-row">
           <app-book-item [book]="book" class="flex-grow-1"></app-book-item>
-          <div class="ml-3">
-            <button class="btn btn-outline-danger m-1" (click)="onRemove(book.id)">Supprimer</button>
+          <div class="ml-3 mt-3 mt-sm-0">
+            <button class="btn btn-outline-danger m-1" (click)="remove(book.id)">Supprimer</button>
             <button class="btn btn-outline-primary m-1" [routerLink]="['/books', book.id, 'details']" routerLinkActive="active">Détails</button>
           </div>
         </div>
