@@ -37,9 +37,9 @@ export class BookListComponent {
 this.bookService.deleteBook(id).subscribe(()=>{this.books$=this.bookService.getBooks();})
 }
 
-  addBook(book: Book) {
-    this.bookService.addBook(book).subscribe(() => {
-      this.books$ = this.bookService.getBooks();
-    })
-  }
+  // addBook(book: Book) {
+  //   this.bookService.addBook(book).subscribe(() => {
+  //     this.books$ = this.bookService.getBooks();
+  //   })
+  // }
 }

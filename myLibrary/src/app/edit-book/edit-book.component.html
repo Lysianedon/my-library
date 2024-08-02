@@ -1,52 +1,51 @@
-<!-- <form (ngSubmit)="onEditBook()" *ngIf="book">
-    <label for="title">Titre : 
-        <input type="text" name="title" id="title" [(ngModel)]="book.title">
-    </label>
-    <label for="author">Auteur : 
-        <input type="text" name="author" id="author" [(ngModel)]="book.author">
-    </label>
-    <label for="description">Résumé : 
-        <input type="text" name="description" id="description" [(ngModel)]="book.description">
-    </label>
-    <label for="status">Disponibilité : 
-        <input type="text" name="status" id="status" [(ngModel)]="book.status">
-    </label>
-
-    <button type="submit">Enregistrer les modifications</button>
-
-</form> -->
-
-<div class="container mt-5" *ngIf="book">
-    <div class="card">
-      <div class="card-header">
-        <h5 class="card-title">{{book.title}}</h5>
+  <div class="container mt-5" *ngIf="book">
+    <div class="card shadow-sm">
+      <div class="card-header bg-primary text-white d-flex justify-content-between">
+        <h4 class="card-title mb-0">{{book.title}}</h4>
+        <button class="btn btn-outline-light btn-sm" (click)="goBack()">Retour</button>
       </div>
       <div class="card-body">
         <form (ngSubmit)="onEditBook()">
-          <div class="form-group">
-            <label for="title">Titre :</label>
-            <input type="text" class="form-control" name="title" id="title" [(ngModel)]="book.title">
+          <div class="form-group row mt-3">
+            <label for="title" class="col-sm-2 col-form-label">Titre </label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="title" id="title" [(ngModel)]="book.title">
+            </div>
           </div>
   
-          <div class="form-group">
-            <label for="author">Auteur :</label>
-            <input type="text" class="form-control" name="author" id="author" [(ngModel)]="book.author">
+          <div class="form-group row mt-4">
+            <label for="author" class="col-sm-2 col-form-label">Auteur </label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="author" id="author" [(ngModel)]="book.author">
+            </div>
           </div>
   
-          <div class="form-group">
-            <label for="description">Résumé :</label>
-            <textarea class="form-control" name="description" id="description" [(ngModel)]="book.description" rows="3"></textarea>
+          <div class="form-group row mt-4">
+            <label for="description" class="col-sm-2 col-form-label">Résumé </label>
+            <div class="col-sm-10">
+              <textarea class="form-control" name="description" id="description" [(ngModel)]="book.description" rows="3"></textarea>
+            </div>
           </div>
   
-          <div class="form-group">
-            <label for="status">Disponibilité :</label>
-            <input type="text" class="form-control" name="status" id="status" [(ngModel)]="book.status">
+          <div class="form-group row mt-4">
+            <label for="status" class="col-sm-2 col-form-label">Disponibilité </label>
+            <div class="col-sm-3">
+                <select class="form-control" name="status" id="status" [(ngModel)]="book.status">
+                  <option value="available" [selected]="book.status === 'available'">Disponible</option>
+                  <option value="borrowed" [selected]="book.status === 'borrowed'">Indisponible</option>
+                </select>
+              </div>
           </div>
   
-          <button type="submit" class="btn btn-primary">Enregistrer les modifications</button>
+          <div class="form-group row mt-4">
+            <div class="col-sm-12 d-flex justify-content-center mt-4 mb-3">
+                <button type="submit" class="btn btn-primary">Enregistrer les modifications</button>
+              </div>
+          </div>
         </form>
       </div>
     </div>
   </div>
+  
   
   
