@@ -1,4 +1,4 @@
-<form (ngSubmit)="onEditBook()" *ngIf="book">
+<!-- <form (ngSubmit)="onEditBook()" *ngIf="book">
     <label for="title">Titre : 
         <input type="text" name="title" id="title" [(ngModel)]="book.title">
     </label>
@@ -14,4 +14,39 @@
 
     <button type="submit">Enregistrer les modifications</button>
 
-</form>
+</form> -->
+
+<div class="container mt-5" *ngIf="book">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title">{{book.title}}</h5>
+      </div>
+      <div class="card-body">
+        <form (ngSubmit)="onEditBook()">
+          <div class="form-group">
+            <label for="title">Titre :</label>
+            <input type="text" class="form-control" name="title" id="title" [(ngModel)]="book.title">
+          </div>
+  
+          <div class="form-group">
+            <label for="author">Auteur :</label>
+            <input type="text" class="form-control" name="author" id="author" [(ngModel)]="book.author">
+          </div>
+  
+          <div class="form-group">
+            <label for="description">Résumé :</label>
+            <textarea class="form-control" name="description" id="description" [(ngModel)]="book.description" rows="3"></textarea>
+          </div>
+  
+          <div class="form-group">
+            <label for="status">Disponibilité :</label>
+            <input type="text" class="form-control" name="status" id="status" [(ngModel)]="book.status">
+          </div>
+  
+          <button type="submit" class="btn btn-primary">Enregistrer les modifications</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  
