@@ -3,6 +3,7 @@ import { BookListComponent } from './book-list/book-list.component';
 import { BookDetailComponent } from './book-detail/book-detail.component';
 import { EditBookComponent } from './edit-book/edit-book.component';
 import { AddBookComponent } from './add-book/add-book.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 /**
  * The routes configuration for the application.
@@ -14,4 +15,5 @@ export const routes: Routes = [
     {path: "books/add", component: AddBookComponent},
     {path: "books/:bookId/details", component: BookDetailComponent},
     {path: "books/:bookId/edit", component: EditBookComponent},
+    { path: "**", component: PageNotFoundComponent } // 404 route
 ];
