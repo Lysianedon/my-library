@@ -1,38 +1,79 @@
-<div class="container mt-5">
+   <div class="container mt-5">
     <div class="card shadow-sm">
       <div class="card-header bg-primary text-white d-flex justify-content-between">
         <h3 class="card-title mb-0 mx-auto">Ajouter un livre</h3>
+        <button class="btn btn-outline-light btn-sm" (click)="goBack()">Retour</button>
       </div>
       <div class="card-body">
-        <form (ngSubmit)="onAddBook()">
+        <form #bookForm="ngForm" (ngSubmit)="onAddBook()">
           <div class="form-group row mt-3">
             <label for="title" class="col-sm-2 col-form-label">Titre</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" name="title" id="title" [(ngModel)]="newBook.title">
+              <input
+                type="text"
+                class="form-control"
+                name="title"
+                id="title"
+                [(ngModel)]="newBook.title"
+                required
+                minlength="1"
+                #title="ngModel"
+              >
+              <div *ngIf="title.invalid && title.touched" class="text-danger">
+                <small *ngIf="title.errors?.['required']">Le titre est requis.</small>
+                <small *ngIf="title.errors?.['minlength']">Le titre doit avoir au moins 1 caractère.</small>
+              </div>
             </div>
           </div>
   
           <div class="form-group row mt-4">
             <label for="author" class="col-sm-2 col-form-label">Auteur</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" name="author" id="author" [(ngModel)]="newBook.author">
+              <input
+                type="text"
+                class="form-control"
+                name="author"
+                id="author"
+                [(ngModel)]="newBook.author"
+                required
+                minlength="2"
+                #author="ngModel"
+              >
+              <div *ngIf="author.invalid && author.touched" class="text-danger">
+                <small *ngIf="author.errors?.['required']">L'auteur est requis.</small>
+                <small *ngIf="author.errors?.['minlength']">L'auteur doit avoir au moins 2 caractères.</small>
+              </div>
             </div>
           </div>
   
           <div class="form-group row mt-4">
             <label for="description" class="col-sm-2 col-form-label">Résumé</label>
             <div class="col-sm-10">
-              <textarea class="form-control" name="description" id="description" [(ngModel)]="newBook.description" rows="3"></textarea>
+              <textarea
+                class="form-control"
+                name="description"
+                id="description"
+                [(ngModel)]="newBook.description"
+                required
+                minlength="3"
+                rows="4"
+                #description="ngModel"
+              ></textarea>
+              <div *ngIf="description.invalid && description.touched" class="text-danger">
+                <small *ngIf="description.errors?.['required']">Le résumé est requis.</small>
+                <small *ngIf="description.errors?.['minlength']">Le résumé doit avoir au moins 3 caractères.</small>
+              </div>
             </div>
           </div>
   
           <div class="form-group row mt-4">
             <div class="col-sm-12 d-flex justify-content-center mt-4 mb-3">
-              <button type="submit" class="btn btn-primary">Ajouter</button>
+              <button type="submit" class="btn btn-primary" [disabled]="bookForm.invalid">Ajouter</button>
             </div>
           </div>
         </form>
       </div>
     </div>
   </div>
+  
   
