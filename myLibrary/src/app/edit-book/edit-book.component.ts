@@ -3,6 +3,7 @@ import { Book } from '../../model/book.model';
 import { BookService } from '../../service/book.service';
 import {
   ActivatedRoute,
+  Router,
   RouterLink,
   RouterLinkActive,
 } from '@angular/router';
@@ -24,24 +25,40 @@ import { FormsModule } from '@angular/forms';
 })
 export class EditBookComponent {
 book!:Book;
-constructor(private route: ActivatedRoute, private bookService : BookService, private _location: Location){}
+constructor(private route: ActivatedRoute,private router: Router, private bookService : BookService, private _location: Location){}
 
  /**
    * ngOnInit lifecycle hook to initialize the component.
    * It retrieves the book ID from the route parameters and fetches the book details.
    */
+  // ngOnInit(): void {
+  //       this.route.paramMap.subscribe(params => {
+  //         const id : string|null = params.get("bookId");
+    
+  //         if(id){
+  //           this.bookService.getBookById(id).subscribe((book) => {
+  //             this.book = book;
+  //           } )
+  //         }
+    
+  //         });
+  // };
   ngOnInit(): void {
-        this.route.paramMap.subscribe(params => {
-          const id : string|null = params.get("bookId");
-    
-          if(id){
-            this.bookService.getBookById(id).subscribe((book) => {
-              this.book = book;
-            } )
+    this.route.paramMap.subscribe(params => {
+      const id: string | null = params.get('bookId');
+      if (id) {
+        this.bookService.getBookById(id).subscribe(
+          (book) => {
+            this.book = book;
+          },
+          (error) => {
+            console.error(error);
+            this.router.navigate(['/404']);
           }
-    
-          });
-  };
+        );
+      }
+    });
+  }
 
   submit() {
     if(this.book){

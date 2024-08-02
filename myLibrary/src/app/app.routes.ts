@@ -15,5 +15,6 @@ export const routes: Routes = [
     {path: "books/add", component: AddBookComponent},
     {path: "books/:bookId/details", component: BookDetailComponent},
     {path: "books/:bookId/edit", component: EditBookComponent},
-    { path: "**", component: PageNotFoundComponent } // 404 route
+    { path: '404', component: PageNotFoundComponent },
+    { path: "**", redirectTo: '404' } // 404 route
 ];
