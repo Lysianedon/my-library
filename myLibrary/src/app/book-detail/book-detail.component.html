@@ -1,1 +1,9 @@
-<p>book-detail works!</p>
+<div *ngIf="book">
+    <p>{{book.id}}</p>
+    <p>{{book.title}}</p>
+    <p>{{book.author}}</p>
+    <p>{{book.description}}</p>
+    <p>{{book.status}}</p>
+    <button [routerLink]="['/books', book.id, 'edit']" routerLinkActive="active">Modifier</button>
+
+</div>

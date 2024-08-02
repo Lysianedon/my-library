@@ -8,7 +8,7 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class BookService {
-  private apiURL = 'http://localhost:3000/tasks'; // URL de l'API
+  private apiURL = 'http://localhost:3000/books'; // URL de l'API
 
   constructor(private http: HttpClient) {}
 
@@ -16,7 +16,7 @@ export class BookService {
     return this.http.get<Book[]>(this.apiURL);
   }
 
-  getBookById(id: number): Observable<Book> {
+  getBookById(id: string): Observable<Book> {
     return this.http.get<Book>(`${this.apiURL}/${id}`).pipe(
       catchError((error) => {
         console.error(`Book with ID ${id} not found`, error);
@@ -34,8 +34,8 @@ export class BookService {
     );
   }
 
-  updateBook(book: Book): Observable<void> {
-    return this.http.put<void>(this.apiURL, book).pipe(
+  updateBook(book: Book): Observable<Book> {
+    return this.http.put<Book>(`${this.apiURL}/${book.id}`, book).pipe(
       catchError((error) => {
         console.error(`Book with ID ${book.id} not found`, error);
         return throwError(() => new Error('Not Found'));
@@ -43,7 +43,7 @@ export class BookService {
     );
   }
 
-  deleteBook(id: number): Observable<void> {
+  deleteBook(id: string): Observable<void> {
     return this.http.delete<void>(`${this.apiURL}/${id}`).pipe(
       catchError((error) => {
         console.error(`Book with ID ${id} not found`, error);

@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-add-book',
   standalone: true,
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './add-book.component.html',
   styleUrl: './add-book.component.css',
 })
@@ -15,7 +15,7 @@ export class AddBookComponent {
     title: '',
     author: '',
     description: '',
-    status: '',
+    status: 'available',
   };
 
   @Output() addBook = new EventEmitter<Book>();
@@ -24,13 +24,14 @@ export class AddBookComponent {
 
   onAddBook() {
     if (this.newBook) {
+      this.newBook.id= Date.now().toString();
       this.addBook.emit(this.newBook);
       this.newBook = {
         id: '',
         title: '',
         author: '',
         description: '',
-        status: '',
+        status: 'available',
       };
     }
   }

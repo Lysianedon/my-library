@@ -1,1 +1,17 @@
-<p>edit-book works!</p>
+<form (ngSubmit)="onEditBook()" *ngIf="book">
+    <label for="title">Titre : 
+        <input type="text" name="title" id="title" [(ngModel)]="book.title">
+    </label>
+    <label for="author">Auteur : 
+        <input type="text" name="author" id="author" [(ngModel)]="book.author">
+    </label>
+    <label for="description">Résumé : 
+        <input type="text" name="description" id="description" [(ngModel)]="book.description">
+    </label>
+    <label for="status">Disponibilité : 
+        <input type="text" name="status" id="status" [(ngModel)]="book.status">
+    </label>
+
+    <button type="submit">Enregistrer les modifications</button>
+
+</form>

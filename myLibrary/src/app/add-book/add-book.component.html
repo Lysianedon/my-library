@@ -1,1 +1,14 @@
-<p>add-book works!</p>
+<form (ngSubmit)="onAddBook()">
+    <label for="title">Titre : 
+        <input type="text" name="title" id="title" [(ngModel)]="newBook.title">
+    </label>
+    <label for="author">Auteur : 
+        <input type="text" name="author" id="author" [(ngModel)]="newBook.author">
+    </label>
+    <label for="description">Résumé : 
+        <input type="text" name="description" id="description" [(ngModel)]="newBook.description">
+    </label>
+
+    <button type="submit">Ajouter</button>
+
+</form>

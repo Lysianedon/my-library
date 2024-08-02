@@ -34,10 +34,12 @@ export class BookListComponent {
     this.books$ = this.bookService.getBooks();
   }
   onRemove(id: string): void {
-    return;
-  }
+this.bookService.deleteBook(id).subscribe(()=>{this.books$=this.bookService.getBooks();})
+}
 
   addBook(book: Book) {
-    return;
+    this.bookService.addBook(book).subscribe(() => {
+      this.books$ = this.bookService.getBooks();
+    })
   }
 }
