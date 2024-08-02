@@ -4,7 +4,8 @@
 <ul *ngIf="books$">
     <li *ngFor="let book of books$ | async">
         <app-book-item [book]="book"></app-book-item>
-        <button (click)="onRemove(book.id)">Supprimer</button>
-        <button [routerLink]="['/books', book.id, 'details']" routerLinkActive="active">Détails</button>
+        <button class="btn btn-danger m-1" (click)="onRemove(book.id)">Supprimer</button>
+        <button class="btn btn-info m-1 " [routerLink]="['/books', book.id, 'details']"
+            routerLinkActive="active">Détails</button>
     </li>
 </ul>
